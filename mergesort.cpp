@@ -1,37 +1,42 @@
-
 #include<iostream>
 using namespace std;
-int merge(int ar[],s,e);
 
-{int mid =(s+e)/2;
-int i=s,int temp[e];
-int j= mid+1;
-int k=s;
-	while(i<=mid;&& j<=e)
+int mergea(int ar[],int s,int e)
+
+{
+int mid =(s+e)/2;
+int i=s ,temp[100] , j= mid+1,k=s;
+
+	while(i<=mid && j<=e)
 	{
 		if (ar[i]<ar[j])
 		{
 			temp[k++]=ar[i++];
 		}
 		else
-			temp[k++]= ar[j++];
-		
+			temp[k++] = ar[j++];
+
 	}
-	
-	while(i!=s)
-		temp[k++]= ar[i++];
+
+	while(i<=mid)
+		{
+		    temp[k++]= ar[i++];
+		}
+		while(j<=e)
+		{
+		    temp[k++]= ar[j++];
+		}
+
 	for(k=0;k<=e;k++)
 	{
-		ar[k]=temp[k];	
-
+		ar[k]=temp[k];
 
 	}
 
-	
 }
 int mergeS(int arr[],int si,int ei)
 {
-    int mid,t;
+    int mid=0;
 
     if(si>=ei)
     {
@@ -39,15 +44,15 @@ int mergeS(int arr[],int si,int ei)
         return 0;
     }
 
- 
+
  mid=(si+ei)/2;
  mergeS(arr,si,mid);
  mergeS(arr,mid+1,ei);
-merge(arr,si,ei);
+ mergea (arr,si,ei);
 }
 
 
-}
+
 
 int main()
 {
@@ -62,7 +67,7 @@ cin>>arr[n];
 n++;
 }
 
-mergeS(arr,0,s);
+mergeS(arr,0,s-1);
 n=0;
 while(n<s)
 {
