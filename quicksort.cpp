@@ -2,7 +2,7 @@
 using namespace std;
 int partition(int *ar, int s, int e)
 {
-    cout<<"\nentering partition function";
+    
    //getting position
    int i=s,n=ar[s],flag=0;
 
@@ -13,8 +13,7 @@ int partition(int *ar, int s, int e)
            flag++;
        }
   i++; }
-//swapping
-cout<<flag<<endl;
+
 int temp=0;
 temp=ar[flag];
 ar[flag]=ar[s];
@@ -48,7 +47,7 @@ return flag;
 }//end of position
  int quicksort(int arr[],int si,int ei)
  {
-      cout<<"\nenterting quicksort function\n"<<ei;
+  
      int c;
      if(si>=ei|| ei==0)
     {
