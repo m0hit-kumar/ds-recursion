@@ -1,53 +1,26 @@
 #include<iostream>
 using namespace std;
-int partition(int *ar, int s, int e)
+int partition(int arr[], int low, int high)
 {
-    
-   //getting position
-   int i=s,n=ar[s],flag=0;
+    int pivot = arr[high];    // pivot
+    int i = (low - 1);  // Index of smaller element
 
-   while(i<=e)
-   {
-       if(ar[i]<n)
-       {
-           flag++;
-       }
-  i++; }
-
-int temp=0;
-temp=ar[flag];
-ar[flag]=ar[s];
-ar[s]=temp;
-
-
-//checking elements
-int a=s,b=flag+1;
-while(a<flag&&b<=e)
-{
-    if (ar[a]<ar[flag])
+    for (int j = low; j <= high- 1; j++)
     {
-        a++;
+        // If current element is smaller than or equal to pivot
+        if (arr[j] <= pivot)
+        {
+            i++;    // increment index of smaller element
+            swap(arr[i], arr[j]);
+        }
     }
-
-    else if(ar[a]>=ar[flag])
-    {
-        if(ar[b]<ar[flag])
-            {
-            temp=0;
-            temp=ar[a];
-            ar[a]=ar[b];
-            ar[b]=temp;
-                b++;
-            }
-        else b++;
-    }
-}//end of while loop
-
-return flag;
-}//end of position
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
  int quicksort(int arr[],int si,int ei)
  {
-  
+
+ 
      int c;
      if(si>=ei|| ei==0)
     {
@@ -56,7 +29,7 @@ return flag;
     }
     c=partition(arr,si,ei);
 
-    quicksort(arr,si,c);
+    quicksort(arr,si,c-1);
     quicksort(arr,c+1,ei);
 
  }
@@ -77,4 +50,3 @@ cout<<arr[n]<<" ";
 n++;
 }
 }
-
