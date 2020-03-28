@@ -20,7 +20,7 @@ int partition(int arr[], int low, int high)
  int quicksort(int arr[],int si,int ei)
  {
 
- 
+
      int c;
      if(si>=ei|| ei==0)
     {
